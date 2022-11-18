@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8443;
 const app = express();
 app.use(cors());
 
@@ -17,6 +17,15 @@ app.get('/', (req, res) => {
   })
 })
 
+// ----------------- Routes -----------------
+const authRoutes = require('./routes/auth');
+
+
+// ----------------- Middlewares -----------------
+app.use('/auth', authRoutes);
+
+
+// ----------------- Server -----------------
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`)
 })
