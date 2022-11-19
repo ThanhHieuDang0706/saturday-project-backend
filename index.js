@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 
@@ -23,4 +23,6 @@ const choORoute = require('./routes/choO');
 // ----------------- Middlewares -----------------
 app.use('/cho-o', choORoute);
 // ----------------- Server -----------------
-app.listen(PORT || 3002);
+app.listen(PORT || 3000, () => {
+  console.log(`Server is running on port ${PORT}`); 
+});
