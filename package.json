@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run db:dev:up && npm run generate:prisma && node index.js",
+    "start": "node index.js",
+    "heroku-prebuild": "docker-compose up -d dev-db && npx prisma migrate dev --name init",
+    "heroku-postbuild": "docker-compose up -d dev-db && npx prisma migrate dev --name init",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:dev:rm": "docker-compose rm -s -f -v dev-db",
