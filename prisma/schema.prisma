@@ -28,10 +28,10 @@ model ChoO {
   soNha String 
   tenDuong String
   quan String
+  moTa String
+  gia Int
   chuNhaId Int @unique
   chuNha ChuNha @relation(fields: [chuNhaId], references: [id])
   dienTich Float
   hinhAnh String
 }
-
-
