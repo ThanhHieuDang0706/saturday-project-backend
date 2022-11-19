@@ -1,1 +1,1 @@
-web: npm db:dev:up && npm generate:prisma && npm start
+web: npm start
