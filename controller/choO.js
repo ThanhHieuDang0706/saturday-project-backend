@@ -36,10 +36,13 @@ const getChoOAll = async (req, res) => {
 
 const getChoOTheoId = async (req, res) => {
     try {
-        const id = req.params.id;
-        const choO = await prisma.choO.findOne({
+        const id = Number(req.params.id);
+        const choO = await prisma.choO.findUnique({
             where: {
-                id
+                id: id
+            },
+            include: {
+                chuNha: true
             }
         });
         if (choO) {
@@ -88,5 +91,6 @@ module.exports = {
     createChoO,
     getChoOAll,
     updateChoO,
-    deleteChoO
+    deleteChoO,
+    getChoOTheoId
 };
