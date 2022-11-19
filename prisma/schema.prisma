@@ -19,6 +19,7 @@ model ChuNha {
   id Int @id @default(autoincrement())
   ten String
   soDienThoai String
+  choO ChoO?
 }
 
 model ChoO {
@@ -27,7 +28,8 @@ model ChoO {
   soNha String 
   tenDuong String
   quan String
-  chuNhaId Int
+  chuNhaId Int @unique
+  chuNha ChuNha @relation(fields: [chuNhaId], references: [id])
   dienTich Float
   hinhAnh String
 }

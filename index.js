@@ -1,9 +1,10 @@
-import express from "express";
-import cors from 'cors';
-import dotenv from 'dotenv';
+
+const express = require("express");
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 dotenv.config();
-const PORT = process.env.PORT || 8443;
+const PORT = process.env.PORT || 3002;
 const app = express();
 app.use(cors());
 
@@ -18,13 +19,9 @@ app.get('/', (req, res) => {
 })
 
 // ----------------- Routes -----------------
-const authRoutes = require('./routes/auth');
-
-
+const choORoute = require('./routes/choO');
 // ----------------- Middlewares -----------------
-app.use('/auth', authRoutes);
-
-
+app.use('/cho-o', choORoute);
 // ----------------- Server -----------------
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`)
