@@ -15,3 +15,21 @@ model User {
   email   String   @unique
   name    String?
 }
+model ChuNha {
+  id Int @id @default(autoincrement())
+  ten String
+  soDienThoai String
+}
+
+model ChoO {
+  id Int @id @default(autoincrement())
+  ten String 
+  soNha String 
+  tenDuong String
+  quan String
+  chuNhaId Int
+  dienTich Float
+  hinhAnh String
+}
+
+
