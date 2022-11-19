@@ -1,1 +1,1 @@
-web: npm install; npm run generate:prisma; npm start
+web: npm install; npm run generate:prisma; npx prisma generate; npm start
