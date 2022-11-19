@@ -28,8 +28,8 @@ model ChoO {
   soNha String 
   tenDuong String
   quan String
-  moTa String
-  gia Int
+  moTa String @default("")
+  gia Int @default(0)
   chuNhaId Int @unique
   chuNha ChuNha @relation(fields: [chuNhaId], references: [id])
   dienTich Float
