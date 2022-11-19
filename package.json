@@ -19,8 +19,8 @@
     "url": "git+https://github.com/bao-nguyenbku/saturday-project-backend.git"
   },
   "engines": {
-    "npm": "7.x",
-    "node": "14.x"
+    "npm": "8.x",
+    "node": "18.x"
   },
   "author": "",
   "license": "ISC",
