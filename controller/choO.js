@@ -27,15 +27,10 @@ const getChoOAll = async (req, res) => {
     try {
         // TODO: get chu nha
         const choO = await prisma.choO.findMany({
-            select: {
-                chuNha: {
-                    select: {
-                        ten: true
-                    }
-                }
+            include: {
+                chuNha: true
             }
         });
-        console.log(choO);
         res.status(200).json(choO);
     } catch (err) {
         console.error(err);
