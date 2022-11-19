@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hieudang
+      POSTGRES_DB: cnpm
+    ports:
+      - 5432
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
