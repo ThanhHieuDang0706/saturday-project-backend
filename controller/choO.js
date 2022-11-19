@@ -1,25 +1,21 @@
-const {PrismaClient} = require('@prisma/client');
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 require('dotenv').config();
 
-module.exports = app => {
-
-}
-
 const createChoO = async (req, res) => {
     try {
-        // FIXME: process the body
+        // FIXME: process, verify the body
         const choO = await prisma.choO.create({
             data: {
-                ...req.body,
+                ...req.body
             }
         });
 
         res.status(201).json(choO);
     } catch (err) {
         console.error(err);
-        res.send({ error: err });
+        res.status(422).send({ error: err });
     }
 };
 
@@ -38,11 +34,30 @@ const getChoOAll = async (req, res) => {
     }
 }
 
+const getChoOTheoId = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const choO = await prisma.choO.findOne({
+            where: {
+                id
+            }
+        });
+        if (choO) {
+            res.status(200).json(choO);
+        } else {
+            res.status(404).json({ message: "Not found" });
+        }
+    } catch (err) {
+        console.error(err);
+        res.send({ error: err });
+    }
+}
+
 const deleteChoO = async (req, res) => {
     try {
         const choO = await prisma.choO.delete({
             where: {
-                id: req.body.id,
+                id: req.body.id
             }
         });
         res.status(200).json(choO);
@@ -56,10 +71,10 @@ const updateChoO = async (req, res) => {
     try {
         const choO = await prisma.choO.update({
             where: {
-                id: req.body.id,
+                id: req.body.id
             },
             data: {
-                ...req.body,
+                ...req.body
             }
         });
         res.status(200).json(choO);
@@ -74,4 +89,4 @@ module.exports = {
     getChoOAll,
     updateChoO,
     deleteChoO
-}
+};
