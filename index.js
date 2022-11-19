@@ -23,4 +23,4 @@ const choORoute = require('./routes/choO');
 // ----------------- Middlewares -----------------
 app.use('/cho-o', choORoute);
 // ----------------- Server -----------------
-app.listen(PORT || 3000);
+app.listen(PORT || 3002);
