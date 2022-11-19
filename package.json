@@ -10,13 +10,16 @@
     "db:dev:rm": "docker-compose rm -s -f -v dev-db",
     "db:dev:up": "docker-compose up -d dev-db",
     "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up",
-    "generate:prisma": "npx prisma migrate dev --name init"
+    "generate:prisma": "npx prisma migrate dev --name init",
+    "build": "ng build",
+    "heroku-postbuild": "ng build --prod"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bao-nguyenbku/saturday-project-backend.git"
   },
   "engines": {
+    "npm": "7.x",
     "node": "14.x"
   },
   "author": "",
