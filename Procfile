@@ -1,1 +1,1 @@
-web: node ./index.js
+web: npm db:dev:up && npm generate:prisma && npm start
