@@ -19,7 +19,7 @@ model ChuNha {
   id Int @id @default(autoincrement())
   ten String
   soDienThoai String
-  choO ChoO?
+  choO ChoO[]
 }
 
 model ChoO {
@@ -30,7 +30,7 @@ model ChoO {
   quan String
   moTa String @default("")
   gia Int @default(0)
-  chuNhaId Int @unique
+  chuNhaId Int
   chuNha ChuNha @relation(fields: [chuNhaId], references: [id])
   dienTich Float
   hinhAnh String
