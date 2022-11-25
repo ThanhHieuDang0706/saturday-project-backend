@@ -8,7 +8,15 @@ const createChoO = async (req, res) => {
         // FIXME: process, verify the body
         const choO = await prisma.choO.create({
             data: {
-                ...req.body
+                ...req.body,
+                chuNha: {
+                    create: {
+                        ...req.body?.chuNha
+                    }
+                }
+            },
+            include: {
+                chuNha: true
             }
         });
 
