@@ -80,14 +80,26 @@ const deleteChoO = async (req, res) => {
 
 const updateChoO = async (req, res) => {
     try {
+        console.log(req.body);
+        const updateChoOData = { ...req.body };
+        delete updateChoOData.chuNha;
         const choO = await prisma.choO.update({
             where: {
                 id: req.body.id
             },
             data: {
-                ...req.body
-            }
+                ...updateChoOData,
+                chuNhaId: parseInt(req.body.chuNha.id)
+            },
         });
+        await prisma.chuNha.update({
+            where: {
+                id: req.body.chuNha.id
+            },
+            data: {
+                ...req.body.chuNha
+            }
+        })
         res.status(200).json(choO);
     } catch (err) {
         console.error(err);
