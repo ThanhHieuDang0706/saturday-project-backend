@@ -70,8 +70,19 @@ const deleteChoO = async (req, res) => {
             where: {
                 id: req.body.id
             }
-        });
-        res.status(200).json(choO);
+        })
+        if (choO) {
+            const chuNha = await prisma.chuNha.delete({
+                where: {
+                    id: choO.chuNhaId
+                }
+            });
+            if (chuNha) {
+                return res.json(choO);
+            }
+        }
+
+
     } catch (err) {
         console.error(err);
         res.send({ error: err });
